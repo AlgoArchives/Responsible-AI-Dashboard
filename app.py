@@ -73,6 +73,30 @@ def explainability_analysis(data):
     st.pyplot(fig)
 
 
+def transparency_section(data):
+    st.write("### Data Transparency")
+    st.write("#### Dataset Information")
+    st.write(data.describe())
+
+    st.write("### Model Transparency")
+    st.write("#### Logistic Regression Model Details")
+    st.write("Model used: Logistic Regression")
+    st.write("Hyperparameters: Default")
+
+
+def user_feedback_section():
+    st.write("### User Feedback")
+    with st.form("feedback_form"):
+        name = st.text_input("Name")
+        feedback = st.text_area("Feedback")
+        submitted = st.form_submit_button("Submit")
+        if submitted:
+            st.write("Thank you for your feedback!")
+            # In a real application, you would save this feedback to a database or file
+            st.write("Name:", name)
+            st.write("Feedback:", feedback)
+
+
 if option == "Fairness Analysis":
     data = load_data()
     fairness_analysis(data)
@@ -80,3 +104,10 @@ if option == "Fairness Analysis":
 if option == "Model Explainability":
     data = load_data()
     explainability_analysis(data)
+
+if option == "Transparency":
+    data = load_data()
+    transparency_section(data)
+
+if option == "User Feedback":
+    user_feedback_section()
