@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
 import shap
+import matplotlib.pyplot as plt
 
 # Title and Sidebar
 st.title("Responsible AI Dashboard")
@@ -68,6 +69,7 @@ def explainability_analysis(data):
 
     st.write("Feature Importance")
     shap.summary_plot(shap_values, X_test, plot_type="bar", show=False)
+    plt.gcf().set_size_inches(8, 6)
     st.pyplot()
 
 
