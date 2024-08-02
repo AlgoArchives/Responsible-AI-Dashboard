@@ -68,9 +68,9 @@ def explainability_analysis(data):
     shap_values = explainer(X_test)
 
     st.write("Feature Importance")
+    fig, ax = plt.subplots()
     shap.summary_plot(shap_values, X_test, plot_type="bar", show=False)
-    plt.gcf().set_size_inches(8, 6)
-    st.pyplot()
+    st.pyplot(fig)
 
 
 if option == "Fairness Analysis":
